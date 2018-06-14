@@ -1,0 +1,158 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+double fx(int, double);
+
+int main(void) {
+  int i, i_MAX;
+  double x, fourie;
+  i_MAX = 50; // フーリエ項数
+
+  FILE *fp;
+  fp = fopen("fourier.txt", "w");
+
+  fourie = 0;
+  for(x = - 2 * M_PI; x <= 2 * M_PI; x = x + 0.1) {
+    for(i = 1; i <= i_MAX; i++) {
+      fourie = fourie + fx(i, x);
+    }
+  printf("fourier(x = %lf) = %lf\n", x, - fourie / M_PI + 0.5);
+  fprintf(fp, "%lf %lf\n", x, - fourie / M_PI + 0.5);
+  fourie = 0;
+  }
+
+  return 0;
+}
+
+double fx(int n, double x) {
+  return sin(n * x) / n;
+}
+/*
+fourier(x = -6.283185) = 0.500000
+fourier(x = -6.183185) = 0.025584
+fourier(x = -6.083185) = 0.005778
+fourier(x = -5.983185) = 0.030717
+fourier(x = -5.883185) = 0.067858
+fourier(x = -5.783185) = 0.092247
+fourier(x = -5.683185) = 0.099864
+fourier(x = -5.583185) = 0.104789
+fourier(x = -5.483185) = 0.120093
+fourier(x = -5.383185) = 0.144132
+fourier(x = -5.283185) = 0.165571
+fourier(x = -5.183185) = 0.178251
+fourier(x = -5.083185) = 0.187497
+fourier(x = -4.983185) = 0.201988
+fourier(x = -4.883185) = 0.222805
+fourier(x = -4.783185) = 0.243088
+fourier(x = -4.683185) = 0.257409
+fourier(x = -4.583185) = 0.268362
+fourier(x = -4.483185) = 0.282548
+fourier(x = -4.383185) = 0.301914
+fourier(x = -4.283185) = 0.321661
+fourier(x = -4.183185) = 0.336834
+fourier(x = -4.083185) = 0.348662
+fourier(x = -3.983185) = 0.362619
+fourier(x = -3.883185) = 0.381152
+fourier(x = -3.783185) = 0.400659
+fourier(x = -3.683185) = 0.416407
+fourier(x = -3.583185) = 0.428728
+fourier(x = -3.483185) = 0.442437
+fourier(x = -3.383185) = 0.460417
+fourier(x = -3.283185) = 0.479875
+fourier(x = -3.183185) = 0.496100
+fourier(x = -3.083185) = 0.508695
+fourier(x = -2.983185) = 0.522084
+fourier(x = -2.883185) = 0.539647
+fourier(x = -2.783185) = 0.559221
+fourier(x = -2.683185) = 0.575925
+fourier(x = -2.583185) = 0.588638
+fourier(x = -2.483185) = 0.601576
+fourier(x = -2.383185) = 0.618777
+fourier(x = -2.283185) = 0.638656
+fourier(x = -2.183185) = 0.655938
+fourier(x = -2.083185) = 0.668627
+fourier(x = -1.983185) = 0.680879
+fourier(x = -1.883185) = 0.697697
+fourier(x = -1.783185) = 0.718165
+fourier(x = -1.683185) = 0.736278
+fourier(x = -1.583185) = 0.748775
+fourier(x = -1.483185) = 0.759869
+fourier(x = -1.383185) = 0.776158
+fourier(x = -1.283185) = 0.797752
+fourier(x = -1.183185) = 0.817333
+fourier(x = -1.083185) = 0.829373
+fourier(x = -0.983185) = 0.838142
+fourier(x = -0.883185) = 0.853345
+fourier(x = -0.783185) = 0.877449
+fourier(x = -0.683185) = 0.900631
+fourier(x = -0.583185) = 0.911717
+fourier(x = -0.483185) = 0.913681
+fourier(x = -0.383185) = 0.924175
+fourier(x = -0.283185) = 0.957046
+fourier(x = -0.183185) = 1.003471
+fourier(x = -0.083185) = 1.033684
+fourier(x = 0.016815) = 0.242981
+fourier(x = 0.116815) = 0.063363
+fourier(x = 0.216815) = 0.030644
+fourier(x = 0.316815) = 0.031080
+fourier(x = 0.416815) = 0.057987
+fourier(x = 0.516815) = 0.089619
+fourier(x = 0.616815) = 0.108080
+fourier(x = 0.716815) = 0.114484
+fourier(x = 0.816815) = 0.122654
+fourier(x = 0.916815) = 0.141191
+fourier(x = 1.016815) = 0.164961
+fourier(x = 1.116815) = 0.183611
+fourier(x = 1.216815) = 0.194616
+fourier(x = 1.316815) = 0.205091
+fourier(x = 1.416815) = 0.221849
+fourier(x = 1.516815) = 0.243109
+fourier(x = 1.616815) = 0.261677
+fourier(x = 1.716815) = 0.274457
+fourier(x = 1.816815) = 0.285938
+fourier(x = 1.916815) = 0.301886
+fourier(x = 2.016815) = 0.321939
+fourier(x = 2.116815) = 0.340506
+fourier(x = 2.216815) = 0.354245
+fourier(x = 2.316815) = 0.366230
+fourier(x = 2.416815) = 0.381654
+fourier(x = 2.516815) = 0.401021
+fourier(x = 2.616815) = 0.419677
+fourier(x = 2.716815) = 0.434046
+fourier(x = 2.816815) = 0.446265
+fourier(x = 2.916815) = 0.461254
+fourier(x = 3.016815) = 0.480200
+fourier(x = 3.116815) = 0.499049
+fourier(x = 3.216815) = 0.513899
+fourier(x = 3.316815) = 0.526167
+fourier(x = 3.416815) = 0.540711
+fourier(x = 3.516815) = 0.559395
+fourier(x = 3.616815) = 0.578569
+fourier(x = 3.716815) = 0.593854
+fourier(x = 3.816815) = 0.605996
+fourier(x = 3.916815) = 0.620000
+fourier(x = 4.016815) = 0.638533
+fourier(x = 4.116815) = 0.658235
+fourier(x = 4.216815) = 0.673995
+fourier(x = 4.316815) = 0.685798
+fourier(x = 4.416815) = 0.699036
+fourier(x = 4.516815) = 0.717507
+fourier(x = 4.616815) = 0.738099
+fourier(x = 4.716815) = 0.754507
+fourier(x = 4.816815) = 0.765623
+fourier(x = 4.916815) = 0.777584
+fourier(x = 5.016815) = 0.796066
+fourier(x = 5.116815) = 0.818337
+fourier(x = 5.216815) = 0.835920
+fourier(x = 5.316815) = 0.845600
+fourier(x = 5.416815) = 0.854848
+fourier(x = 5.516815) = 0.873324
+fourier(x = 5.616815) = 0.899664
+fourier(x = 5.716815) = 0.920637
+fourier(x = 5.816815) = 0.926476
+fourier(x = 5.916815) = 0.925827
+fourier(x = 6.016815) = 0.941421
+fourier(x = 6.116815) = 0.989205
+fourier(x = 6.216815) = 1.076809
+*/

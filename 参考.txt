@@ -1,0 +1,3 @@
+// 参考URL
+// フーリエ展開とは https://mathtrain.jp/fourierseries
+// プログラム http://hooktail.sub.jp/mathInPhys/fourier1/
